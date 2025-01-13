@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -7,8 +10,11 @@ import 'package:stroll_test/core/extensions/list_extensions.dart';
 import 'package:stroll_test/core/extensions/widget_extensions.dart';
 import 'package:stroll_test/core/gen/assets.gen.dart';
 import 'package:stroll_test/features/home/data/models/home_model.dart';
+import 'package:stroll_test/features/home/presentation/widgets/question_widget.dart';
 import 'package:stroll_test/features/home/presentation/widgets/ring_widget.dart';
+import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 import '../blocs/home_bloc.dart';
+import 'package:badges/badges.dart' as badges;
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     const QuestionModel(option: "C", value: "Wind-down time after dinners"),
     const QuestionModel(option: "D", value: "The serenity past midnight"),
   ];
+  int currentIndex = -1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,8 +80,17 @@ class _HomePageState extends State<HomePage> {
                               Assets.application.assets.images.timer.svg(),
                               Text(
                                 " 22h 00m",
-                                style: context.textTheme.bodyMedium
-                                    ?.copyWith(color: context.colors.white),
+                                style: context.textTheme.bodyMedium?.copyWith(
+                                  color: context.colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black
+                                          .withOpacity(0.3), // Shadow color
+                                      offset: const Offset(2, 2),
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -84,8 +100,17 @@ class _HomePageState extends State<HomePage> {
                               Assets.application.assets.images.person.svg(),
                               Text(
                                 " 103",
-                                style: context.textTheme.bodyMedium
-                                    ?.copyWith(color: context.colors.white),
+                                style: context.textTheme.bodyMedium?.copyWith(
+                                  color: context.colors.white,
+                                  shadows: [
+                                    Shadow(
+                                      color: Colors.black
+                                          .withOpacity(0.3), // Shadow color
+                                      offset: const Offset(2, 2),
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -98,59 +123,116 @@ class _HomePageState extends State<HomePage> {
               Positioned(
                 bottom: 0,
                 child: Container(
-                  height: 100,
-                  width: context.screenWidth,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [context.colors.black, Colors.transparent],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        stops: [0.5, 0.9]),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Assets.application.assets.images.image.image(
-                            height: 60,
-                            width: 60,
-                          ),
-                        ],
-                      ),
-                      const Gap(10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Gap(10),
-                          AutoSizeText(
-                            "Angelina, 28",
-                            style: context.textTheme.bodyMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: context.colors.white),
-                          ),
-                          Row(
+                    height: 150,
+                    width: context.screenWidth,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [context.colors.black, Colors.transparent],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          stops: [0.5, 1]),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          height: 100,
+                          child: Stack(
                             children: [
-                              AutoSizeText(
-                                "What is your favorite time\nof the day?",
-                                maxLines: 2,
-                                minFontSize: 20,
-                                style: TextStyle(
-                                  color: context.colors.white,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                              Positioned.fill(
+                                child: Row(
+                                  children: [
+                                    badges.Badge(
+                                      position: badges.BadgePosition.topEnd(
+                                          top: 0, end: -87),
+                                      showBadge: true,
+                                      ignorePointer: false,
+                                      onTap: () {},
+                                      badgeStyle: badges.BadgeStyle(
+                                        shape: badges.BadgeShape.instagram,
+                                        badgeColor: Colors.transparent,
+                                        padding: const EdgeInsets.all(5),
+                                        borderRadius: BorderRadius.circular(0),
+                                        elevation: 0,
+                                      ),
+                                      badgeContent: Container(
+                                        width: 100,
+                                        height: 30,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 5),
+                                        decoration: BoxDecoration(
+                                            color: context.colors.black,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topRight: Radius.circular(10),
+                                              bottomLeft: Radius.circular(30),
+                                              bottomRight: Radius.circular(10),
+                                            )),
+                                        child: Row(
+                                          children: [
+                                            Gap(10),
+                                            AutoSizeText(
+                                              "Angelina, 28",
+                                              style: context
+                                                  .textTheme.bodyMedium
+                                                  ?.copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color:
+                                                          context.colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: context.colors.black,
+                                          borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(40),
+                                            topLeft: Radius.circular(40),
+                                            bottomLeft: Radius.circular(40),
+                                            bottomRight: Radius.circular(40),
+                                          ),
+                                        ),
+                                        child: CircleAvatar(
+                                          backgroundColor: context.colors.black,
+                                          radius: 40,
+                                          child: Assets
+                                              .application.assets.images.image
+                                              .image(
+                                            height: 60,
+                                            width: 60,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ).withPadding(
+                                    const EdgeInsets.symmetric(horizontal: 20)),
                               ),
+                              Positioned.fill(
+                                  child: Container(
+                                margin: EdgeInsets.only(left: 110, top: 30),
+                                width: context.screenWidth,
+                                child: Row(
+                                  children: [
+                                    AutoSizeText(
+                                      "What is your favorite time\nof the day?",
+                                      maxLines: 2,
+                                      minFontSize: 20,
+                                      style: TextStyle(
+                                        color: context.colors.white,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )),
                             ],
-                          ).withExpanded(),
-                        ],
-                      )
-                    ],
-                  ).withMargin(const EdgeInsets.symmetric(horizontal: 30)),
-                ),
+                          ),
+                        )
+                      ],
+                    )),
               )
             ],
           )).withExpanded(flex: 2),
@@ -160,16 +242,22 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
+                TextAnimator(
                   "“Mine is definitely the peace in the morning.”",
                   style: context.textTheme.bodySmall?.copyWith(
                       color: context.colors.greyDecor,
                       fontStyle: FontStyle.italic),
+                  atRestEffect: WidgetRestingEffects.wave(
+                      effectStrength: 0.4), // Subtle resting effect
+                  // incomingEffect: WidgetTransitionEffects..incomingFadeIn(), // Smooth fade-in effect
+                  // textAlign: TextAlign.center,
+                  // outgoingEffect: WidgetTransitionEffects.outgoingFadeOut(),
+                  // Adding shimmer-like effects
                 ),
                 GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisExtent: 70,
+                    mainAxisExtent: 57,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                   ),
@@ -182,41 +270,14 @@ class _HomePageState extends State<HomePage> {
                       const NeverScrollableScrollPhysics(), // Prevent scrolling
                   itemBuilder: (context, index) {
                     QuestionModel questionModel = question[index];
-                    return Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF232A2E),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: context.colors.white),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Center(
-                              child: Text(
-                                questionModel.option,
-                                style: context.textTheme.bodySmall
-                                    ?.copyWith(color: context.colors.white),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 5),
-                          Expanded(
-                            child: AutoSizeText(
-                              questionModel.value,
-                              maxLines: 2,
-                              style: context.textTheme.bodyMedium
-                                  ?.copyWith(color: context.colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                    return QuestionWidget(
+                      questionModel: questionModel,
+                      selected: currentIndex == index,
+                    ).withOnTap(() {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    });
                   },
                 ).withPadding(EdgeInsets.symmetric(horizontal: 20)),
                 Container(
@@ -228,10 +289,42 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Pick your option,\nSee who has a similar mind.",
+                          "Pick your option,",
                           style: context.textTheme.bodyMedium
                               ?.copyWith(color: context.colors.white),
+                          // Subtle resting effect
+                          // incomingEffect: WidgetTransitionEffects..incomingFadeIn(), // Smooth fade-in effect
+                          // textAlign: TextAlign.center,
+                          // outgoingEffect: WidgetTransitionEffects.outgoingFadeOut(),
+                          // Adding shimmer-like effects
                         ),
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'See who has a similar ',
+                              style: context.textTheme.bodyMedium!
+                                  .copyWith(color: context.colors.white),
+                            ),
+                            DefaultTextStyle(
+                              style: context.textTheme.bodyMedium!
+                                  .copyWith(color: context.colors.white),
+                              child: AnimatedTextKit(
+                                totalRepeatCount: 4,
+                                pause: Duration(seconds: 5),
+                                animatedTexts: [
+                                  TypewriterAnimatedText('mind.'),
+                                  TypewriterAnimatedText('heart.'),
+                                  TypewriterAnimatedText('spark.'),
+                                  TypewriterAnimatedText('love language.'),
+                                  TypewriterAnimatedText('rhythm.'),
+                                ],
+                                onTap: () {
+                                  print("Tap Event");
+                                },
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                     trailing: SizedBox(
@@ -241,9 +334,16 @@ class _HomePageState extends State<HomePage> {
                           RingWidget(
                             color: context.primaryColor,
                             radius: 50,
-                            child: Assets.application.assets.images.mic.svg(),
+                            child: WidgetAnimator(
+                                atRestEffect: WidgetRestingEffects.bounce(
+                                    duration: const Duration(seconds: 1),
+                                    numberOfPlays: 2,
+                                    // delay: Duration(seconds: 5),
+                                    effectStrength: 0.5),
+                                child:
+                                    Assets.application.assets.images.mic.svg()),
                           ),
-                          Gap(10),
+                          const Gap(10),
                           Container(
                             height: 50,
                             width: 50,
@@ -261,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Gap(10),
+                const Gap(10),
               ].addSpacer(const Gap(10)),
             ),
           )

@@ -1,6 +1,7 @@
 library theme;
 
 import 'package:flutter/material.dart';
+import 'package:stroll_test/core/gen/fonts.gen.dart';
 
 part 'colors.dart';
 part 'text_styles.dart';
@@ -21,6 +22,7 @@ ThemeData _buildLightTheme() {
 
   final themeData = ThemeData(
     useMaterial3: false,
+    fontFamily: FontFamily.nova,
     primaryColor: primaryColor,
     scaffoldBackgroundColor: _Colors.scaffoldColor,
     cardColor: _Colors.white,
@@ -116,6 +118,7 @@ ThemeData _buildDarkTheme() {
 
   final themeData = ThemeData(
     useMaterial3: false,
+    fontFamily: FontFamily.nova,
     primaryColor: primaryColor,
     scaffoldBackgroundColor: _Colors.scaffoldDarkColor,
     cardColor: _Colors.greyDark,
