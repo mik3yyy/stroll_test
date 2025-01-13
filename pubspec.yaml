@@ -32,6 +32,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   overflow_text_animated: ^0.0.6
   flutter_svg: ^2.0.17
+  badges: ^3.1.2
+  widget_and_text_animator: ^1.1.5
+  animated_text_kit: ^4.2.2
 
 
 dev_dependencies:
@@ -56,4 +59,12 @@ flutter:
   assets:
     - application/assets/images/
     - application/assets/fonts/
+ 
+
+  fonts:
+    - family: Nova
+      fonts:
+        - asset: application/assets/fonts/ProximaNova-Regular.otf
+        
+
 

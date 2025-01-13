@@ -22,8 +22,25 @@ class $ApplicationGen {
 class $ApplicationAssetsGen {
   const $ApplicationAssetsGen();
 
+  /// Directory path: application/assets/fonts
+  $ApplicationAssetsFontsGen get fonts => const $ApplicationAssetsFontsGen();
+
   /// Directory path: application/assets/images
   $ApplicationAssetsImagesGen get images => const $ApplicationAssetsImagesGen();
+}
+
+class $ApplicationAssetsFontsGen {
+  const $ApplicationAssetsFontsGen();
+
+  /// File path: application/assets/fonts/ProximaNova-Bold.otf
+  String get proximaNovaBold => 'application/assets/fonts/ProximaNova-Bold.otf';
+
+  /// File path: application/assets/fonts/ProximaNova-Regular.otf
+  String get proximaNovaRegular =>
+      'application/assets/fonts/ProximaNova-Regular.otf';
+
+  /// List of all assets
+  List<String> get values => [proximaNovaBold, proximaNovaRegular];
 }
 
 class $ApplicationAssetsImagesGen {
@@ -32,6 +49,10 @@ class $ApplicationAssetsImagesGen {
   /// File path: application/assets/images/Image.png
   AssetGenImage get image =>
       const AssetGenImage('application/assets/images/Image.png');
+
+  /// File path: application/assets/images/arrow_down.svg
+  SvgGenImage get arrowDown =>
+      const SvgGenImage('application/assets/images/arrow_down.svg');
 
   /// File path: application/assets/images/background video.png
   AssetGenImage get backgroundVideo =>
@@ -65,8 +86,18 @@ class $ApplicationAssetsImagesGen {
       const SvgGenImage('application/assets/images/timer.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [image, backgroundVideo, bar1, bar2, bar3, bar4, mic, person, timer];
+  List<dynamic> get values => [
+        image,
+        arrowDown,
+        backgroundVideo,
+        bar1,
+        bar2,
+        bar3,
+        bar4,
+        mic,
+        person,
+        timer
+      ];
 }
 
 class Assets {
