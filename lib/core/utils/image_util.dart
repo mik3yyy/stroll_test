@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ImageUtils {
@@ -40,31 +39,6 @@ class ImageUtils {
   static dynamic decodeBase64(String encoded) {
     String decoded = utf8.decode(base64Url.decode(encoded));
     return decoded;
-  }
-
-  // Throws exception
-  static Future<File?> pickImage([int quality = 50]) async {
-    ImageSource source = kDebugMode ? ImageSource.gallery : ImageSource.camera;
-    XFile? file = await ImagePicker().pickImage(
-      source: source,
-      imageQuality: quality,
-    );
-
-    if (file == null) return null;
-
-    /// Check file uses allowed file extensions
-    bool hasAllowedExtension = false;
-    for (final extension in allowedExtensions) {
-      if (file.path.toLowerCase().endsWith(extension)) {
-        hasAllowedExtension = true;
-      }
-    }
-
-    if (hasAllowedExtension) {
-      return File(file.path);
-    } else {
-      throw "Only ${allowedExtensions.toString().replaceAll("[", "").replaceAll("]", "")} files are allowed";
-    }
   }
 
   static const imgPermissions = [Permission.camera, Permission.storage];

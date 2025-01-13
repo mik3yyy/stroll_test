@@ -1,16 +1,23 @@
 part of 'theme.dart';
 
 class _Colors {
-  static const primaryColor = Color(0xff249689);
+  // Primary Colors
+  static const primaryColor = Color(0xffFEBB4B);
+  static const secondaryColor = Color(0xffFEBB4B);
 
-  static const secondaryColor = Color(0xff249689);
+  // Light Theme Colors
   static const scaffoldColor = Color(0xffFAFAFA);
-
   static const captionColor = Color(0xff80848B);
-  static const greyLight = Color(0xffF4F4F5);
+  static const greyLight = Color(0xFFCBC9FFB2);
   static const greyOutline = Color(0xffE4E4E7);
 
-  // Decor colors
+  // Dark Theme Colors
+  static const scaffoldDarkColor = Color(0xff121212);
+  static const captionColorDark = Color(0xffB3B3B3);
+  static const greyDark = Color(0xff1E1E1E);
+  static const greyOutlineDark = Color(0xff393939);
+
+  // Decorative Colors (Light)
   static const greenDecor = Color(0xffE3FBCC);
   static const blueDecor = Color(0xffE0EAFF);
   static const orangeDecor = Color(0xffFFEDD4);
@@ -18,6 +25,7 @@ class _Colors {
   static const pinkDecor = Color(0xffFAE9F5);
   static const greyDecor = Color(0xffEAECF5);
 
+  // Decorative Colors (Dark)
   static const greenDecorDark = Color(0xff2B5314);
   static const blueDecorDark = Color(0xff2D3282);
   static const orangeDecorDark = Color(0xff7E2D10);

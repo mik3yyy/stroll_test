@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stroll_test/core/theme/theme.dart';
 
 extension ContextExtensions on BuildContext {
   // Access the screen width
@@ -12,13 +13,12 @@ extension ContextExtensions on BuildContext {
 
   // Access the text theme
   TextTheme get textTheme => Theme.of(this).textTheme;
-
+  AppColorExtension get colors =>
+      Theme.of(this).extension<AppColorExtension>()!;
   // Show a snackbar
   void showSnackBar(String message) {
     ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(content: Text(message)),
     );
   }
-
 }
-
