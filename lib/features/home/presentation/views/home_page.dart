@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Gap(20),
                           OverflowTextAnimated(
                             text: "Stroll Bonfire",
                             style: context.textTheme.displayLarge?.copyWith(
@@ -70,6 +71,24 @@ class _HomePageState extends State<HomePage> {
                             animateDuration: const Duration(milliseconds: 1500),
                             delay: const Duration(milliseconds: 500),
                           ),
+                          const Gap(10),
+                          Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black
+                                        .withOpacity(0.2), // Shadow color
+                                    offset: const Offset(2, 2),
+                                    blurRadius: 10,
+                                  )
+                                ]),
+                                child: Assets
+                                    .application.assets.images.arrowDown
+                                    .svg(width: 10, height: 10),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                       Row(
@@ -77,7 +96,18 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Row(
                             children: [
-                              Assets.application.assets.images.timer.svg(),
+                              Container(
+                                decoration: BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black
+                                        .withOpacity(0.3), // Shadow color
+                                    offset: const Offset(2, 2),
+                                    blurRadius: 10,
+                                  )
+                                ]),
+                                child: Assets.application.assets.images.timer
+                                    .svg(),
+                              ),
                               Text(
                                 " 22h 00m",
                                 style: context.textTheme.bodyMedium?.copyWith(
@@ -85,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                                   shadows: [
                                     Shadow(
                                       color: Colors.black
-                                          .withOpacity(0.3), // Shadow color
+                                          .withOpacity(0.2), // Shadow color
                                       offset: const Offset(2, 2),
                                       blurRadius: 10,
                                     ),
@@ -97,7 +127,18 @@ class _HomePageState extends State<HomePage> {
                           const Gap(10),
                           Row(
                             children: [
-                              Assets.application.assets.images.person.svg(),
+                              Container(
+                                decoration: BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black
+                                        .withOpacity(0.2), // Shadow color
+                                    offset: const Offset(2, 2),
+                                    blurRadius: 10,
+                                  )
+                                ]),
+                                child: Assets.application.assets.images.person
+                                    .svg(),
+                              ),
                               Text(
                                 " 103",
                                 style: context.textTheme.bodyMedium?.copyWith(
@@ -117,6 +158,23 @@ class _HomePageState extends State<HomePage> {
                         ],
                       )
                     ],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 0,
+                child: Container(
+                  height: 100,
+                  width: context.screenWidth,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [
+                          Colors.transparent,
+                          context.colors.black.withOpacity(.4),
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        stops: [0.1, 0.8]),
                   ),
                 ),
               ),
@@ -155,13 +213,17 @@ class _HomePageState extends State<HomePage> {
                                         borderRadius: BorderRadius.circular(0),
                                         elevation: 0,
                                       ),
+                                      badgeAnimation:
+                                          badges.BadgeAnimation.slide(
+                                              animationDuration: Duration.zero),
                                       badgeContent: Container(
                                         width: 100,
                                         height: 30,
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 5),
                                         decoration: BoxDecoration(
-                                            color: context.colors.black,
+                                            color: context.colors.black
+                                                .withOpacity(.4),
                                             borderRadius:
                                                 const BorderRadius.only(
                                               topRight: Radius.circular(10),
@@ -185,17 +247,9 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          color: context.colors.black,
-                                          borderRadius: const BorderRadius.only(
-                                            topRight: Radius.circular(40),
-                                            topLeft: Radius.circular(40),
-                                            bottomLeft: Radius.circular(40),
-                                            bottomRight: Radius.circular(40),
-                                          ),
-                                        ),
                                         child: CircleAvatar(
-                                          backgroundColor: context.colors.black,
+                                          backgroundColor: context.colors.black
+                                              .withOpacity(.4),
                                           radius: 40,
                                           child: Assets
                                               .application.assets.images.image

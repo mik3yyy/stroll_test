@@ -78,7 +78,7 @@ class _MainPageState extends State<MainPage> {
               ignorePointer: false,
               onTap: () {},
               badgeContent: const Text(
-                "10",
+                "12",
                 style: TextStyle(fontSize: 10),
               ),
               badgeAnimation: const badges.BadgeAnimation.rotation(
