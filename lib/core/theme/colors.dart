@@ -2,8 +2,8 @@ part of 'theme.dart';
 
 class _Colors {
   // Primary Colors
-  static const primaryColor = Color(0xffFEBB4B);
-  static const secondaryColor = Color(0xffFEBB4B);
+  static const primaryColor = Color(0xff8B88EF);
+  static const secondaryColor = Color(0xffCCC8FF);
 
   // Light Theme Colors
   static const scaffoldColor = Color(0xffFAFAFA);

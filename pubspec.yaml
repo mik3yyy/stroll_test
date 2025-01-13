@@ -30,6 +30,8 @@ dependencies:
   get_it: ^8.0.3
   bloc: ^9.0.0
   cupertino_icons: ^1.0.8
+  overflow_text_animated: ^0.0.6
+  flutter_svg: ^2.0.17
 
 
 dev_dependencies:

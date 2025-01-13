@@ -379,6 +379,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.6.1"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      sha256: c200fd79c918a40c5cd50ea0877fa13f81bdaf6f0a5d3dbcc2a13e3285d6aa1b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.17"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -629,6 +637,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  overflow_text_animated:
+    dependency: "direct main"
+    description:
+      name: overflow_text_animated
+      sha256: "9ac5935eec58785f8d1ee29d82d73c9631c6b6c850fec1614a5ab29417d854ba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   package_config:
     dependency: transitive
     description:
@@ -1018,6 +1034,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+  vector_graphics:
+    dependency: transitive
+    description:
+      name: vector_graphics
+      sha256: "27d5fefe86fb9aace4a9f8375b56b3c292b64d8c04510df230f849850d912cb7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.15"
   vector_graphics_codec:
     dependency: transitive
     description:
